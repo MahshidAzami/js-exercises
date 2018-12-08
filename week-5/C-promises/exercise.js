@@ -14,9 +14,11 @@
   Promise"
 */
 function exercise1() {
-  var promise1 = resolvedPromise()
+  var promise1 = resolvedPromise();
+  promise1.then(
+    result => (document.getElementById("exercise1").innerText = result)
+  );
 }
-
 /*
   EXERCISE 2
   =======
@@ -27,7 +29,10 @@ function exercise1() {
   Promise"
 */
 function exercise2() {
-  var promise2 = rejectedPromise()
+  var promise2 = rejectedPromise();
+  promise2.catch(
+    result => (document.getElementById("exercise2").innerText = result)
+  );
 }
 
 /*
@@ -40,7 +45,10 @@ function exercise2() {
   EXPECTED RESULT: The #exercise3 element has textContent = "A Longer Promise"
 */
 function exercise3() {
-  var promise3 = delayedPromise()
+  var promise3 = delayedPromise();
+  promise3.then(
+    result => (document.getElementById("exercise3").innerText = result)
+  );
 }
 
 /*
@@ -55,7 +63,12 @@ function exercise3() {
   YOUR NAME"
 */
 function exercise4() {
-  var promise4 = concatPromise()
+  var promise4 = concatPromise();
+  promise4.then(
+    result =>
+      (document.getElementById("exercise4").innerText =
+        result + "Mahshid Azami")
+  );
 }
 
 /*
@@ -72,7 +85,14 @@ function exercise4() {
 */
 
 function exercise5() {
+  const promise5 = helloPromises();
+  promise5.then(
+    result => (document.getElementById("exercise5").innerText = result)
+  );
   // Write your implementation here
+}
+function helloPromises() {
+  return Promise.resolve("Hello Promises!");
 }
 
 /*
@@ -89,41 +109,46 @@ function exercise5() {
   wrong!"
 */
 function exercise6() {
+  const promise6 = SomethingWrong();
+  promise6.catch(
+    result => (document.getElementById("exercise6").innerText = result)
+  );
   // Write your implementation here
 }
-
-
-// 
+function SomethingWrong() {
+  return Promise.reject("Something went wrong!");
+}
+//
 // -------------------------------------
-// 
+//
 // DON'T EDIT THE FUNCTIONS BELOW!
 // THEY ARE PROVIDED FOR YOU
 //
 // -------------------------------------
 //
 function resolvedPromise() {
-  return Promise.resolve('A Promising Promise')
+  return Promise.resolve("A Promising Promise");
 }
 
 function rejectedPromise() {
-  return Promise.reject('A Unpromising Promise')
+  return Promise.reject("A Unpromising Promise");
 }
 
 function delayedPromise() {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
-      resolve('A Longer Promise')
-    }, 2000)
-  })
+      resolve("A Longer Promise");
+    }, 2000);
+  });
 }
 
 function concatPromise() {
-  return Promise.resolve('A Promise from: ')
+  return Promise.resolve("A Promise from: ");
 }
 
-exercise1()
-exercise2()
-exercise3()
-exercise4()
-exercise5()
-exercise6()
+exercise1();
+exercise2();
+exercise3();
+exercise4();
+exercise5();
+exercise6();

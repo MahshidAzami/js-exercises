@@ -33,5 +33,23 @@ When you open index.html in your browser, it should display the existing message
 
 */
 
-
 // Write your code here
+
+setInterval(reload, 2000);
+function reload() {
+  fetch("https://codeyourfuture.herokuapp.com/api/messages")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(array) {
+      document.getElementById("message-list").innerText = "";
+      for (let i = array.length - 20; i < array.length; i++) {
+        document.getElementById("message-list").innerText +=
+          "\n" + array[i].content;
+      }
+    });
+}
+
+//   .then(function(messages) {
+//     document.getElementById("message-list").innerText = messages;
+//   });
